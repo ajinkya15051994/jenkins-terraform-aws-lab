@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     parameters {
-        choice choices: ['plan', 'apply', 'destory'], name: 'action'
+        choice choices: ['plan', 'apply', 'destroy'], name: 'action'
         choice choices: ['dev.tfvars', 'prod.tfvars'], name: 'env'
     }
     
