@@ -9,7 +9,7 @@ pipeline{
         }
         stage("plan"){
             steps{
-                sh "terraform plan -var-file='dev.tfvars -out=dev.out'"
+                sh "terraform plan -var-file='dev.tfvars' -out=dev.out"
             }
         }
         stage("apply"){
