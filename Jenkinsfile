@@ -33,7 +33,7 @@ pipeline{
                 expression { params.action == 'destroy' }
             }
             steps{
-                sh "terraform apply -var-file='${ENV}' -auto-approve"
+                sh "terraform destroy -var-file='${ENV}' -auto-approve"
             }
         }
     }
