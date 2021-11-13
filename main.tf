@@ -4,7 +4,7 @@ module "ec2_instance" {
 
   name = "${var.name}"
 
-  ami                    = "ami-ebd02392"
+  ami                    = "ami-04ad2567c9e3d7893"
   instance_type          = "${var.type}"
   key_name               = "user1"
 
