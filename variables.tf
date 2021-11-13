@@ -1,3 +1,3 @@
-name {}
-type {}
-tag {}
+variable "name" {}
+variable "type" {}
+variable "tag" {}
