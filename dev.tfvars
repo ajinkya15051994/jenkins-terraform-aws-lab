@@ -1,3 +1,3 @@
-name = "dev-machine"
-type = "t2.micro"
-tag = "Dev"
+variable "name" {}
+variable "type" {}
+variable "tag" {}
