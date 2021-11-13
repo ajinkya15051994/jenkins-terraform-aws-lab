@@ -10,7 +10,6 @@ module "ec2_instance" {
 
   ami                    = "ami-04ad2567c9e3d7893"
   instance_type          = "${var.type}"
-  key_name               = "user1"
 
   tags = {
     Environment = "${var.tag}"
