@@ -4,22 +4,21 @@ pipeline{
    
     stages{
         stage("init"){
+            
             steps{
-                sh "sudo terraform init"
+                sh "terraform init"
             }
         }
         stage("plan"){
             
             steps{
-                sh "sudo terraform plan -var-file='dev.tfvars' -out=dev.out"
+                sh "terraform plan -var-file='dev.tfvars' -out=dev.out"
             }
         }
         stage("apply"){
             
             steps{
-                sh "sudo terraform apply -var-file='dev.tfvars' -auto-approve"
-       
-        
+                sh "terraform apply -var-file='dev.tfvars' -auto-approve"
             }
         }
     }
