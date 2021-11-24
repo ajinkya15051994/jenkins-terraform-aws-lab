@@ -6,19 +6,19 @@ pipeline{
         stage("init"){
             
             steps{
-                sh "terraform init"
+                sh "/usr/local/bin/terraform init"
             }
         }
         stage("plan"){
             
             steps{
-                sh "terraform plan -var-file='dev.tfvars' -out=dev.out"
+                sh "/usr/local/bin/terraform plan -var-file='dev.tfvars' -out=dev.out"
             }
         }
         stage("apply"){
             
             steps{
-                sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+                sh "/usr/local/bin/terraform apply -var-file='dev.tfvars' -auto-approve"
             }
         }
     }
