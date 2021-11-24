@@ -1,24 +1,39 @@
 pipeline{
     agent any
     
-   
+    parameters {
+        choice choices: ['plan', 'apply', 'destroy'], name: 'action'
+        choice choices: ['dev.tfvars', 'prod.tfvars'], name: 'env'
+    }
+    
     stages{
         stage("init"){
-            
             steps{
-                sh "/usr/local/bin/terraform init -reconfigure"
+                sh "terraform init"
             }
         }
         stage("plan"){
-            
+            when{
+                expression { params.action == 'plan' }
+            }
             steps{
-                sh "/usr/local/bin/terraform plan -var-file='dev.tfvars' -out=dev.out"
+                sh "terraform plan -var-file='${ENV}'"
             }
         }
         stage("apply"){
-            
+            when{
+                expression { params.action == 'apply' }
+            }
             steps{
-                sh "/usr/local/bin/terraform apply -var-file='dev.tfvars' -auto-approve"
+                sh "terraform apply -var-file='${ENV}' -auto-approve"
+            }
+        }
+        stage("destroy"){
+            when{
+                expression { params.action == 'destroy' }
+            }
+            steps{
+                sh "terraform destroy -var-file='${ENV}' -auto-approve"
             }
         }
     }
