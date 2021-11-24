@@ -6,7 +6,7 @@ pipeline{
         stage("init"){
             
             steps{
-                sh "/usr/local/bin/terraform init"
+                sh "/usr/local/bin/terraform init -reconfigure"
             }
         }
         stage("plan"){
