@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage("init"){
             steps{
-                sh "terraform init"
+                sh "/usr/local/bin/terraform init"
             }
         }
         stage("plan"){
@@ -17,7 +17,7 @@ pipeline{
                 expression { params.action == 'plan' }
             }
             steps{
-                sh "terraform plan -var-file='${ENV}'"
+                sh "/usr/local/bin/terraform plan -var-file='${ENV}'"
             }
         }
         stage("apply"){
@@ -25,7 +25,7 @@ pipeline{
                 expression { params.action == 'apply' }
             }
             steps{
-                sh "terraform apply -var-file='${ENV}' -auto-approve"
+                sh "/usr/local/bin/terraform apply -var-file='${ENV}' -auto-approve"
             }
         }
         stage("destroy"){
@@ -33,7 +33,7 @@ pipeline{
                 expression { params.action == 'destroy' }
             }
             steps{
-                sh "terraform destroy -var-file='${ENV}' -auto-approve"
+                sh "/usr/local/bin/terraform destroy -var-file='${ENV}' -auto-approve"
             }
         }
     }
